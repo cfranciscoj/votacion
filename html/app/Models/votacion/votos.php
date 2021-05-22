@@ -83,7 +83,7 @@ EOT;
 //
 // EOT;
 //       return DB::select($qry);
-//     } hola
+//     }
 
 
 

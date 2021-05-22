@@ -18,19 +18,19 @@ var cadena = '';
 var claveplana = '';
 var hashedPassword = '';
 var transporter = nodemailer.createTransport({
-  host: "mail.rembox.cl",
+  host: "",
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: "caravena@rembox.cl", // generated ethereal user
-    pass: "Mat3mat1cAs11+", // generated ethereal password
+    user: "", // generated ethereal user
+    pass: "", // generated ethereal password
   },
 });
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-  from: 'Votación SSD <no-reply@sdefensa.cl>', // sender address
-  to: "caravena@rembox.cl", // list of receivers
+  from: 'Votación SSD', // sender address
+  to: "", // list of receivers
   subject: "Acceso a sistema de Votación", // Subject line
   text: "Hello world?", // plain text body
   html: "<b>Hello world?</b>", // html body
@@ -44,8 +44,8 @@ while (line = liner.next()) {
     myPlaintextPassword = Math.floor(Math.random() * 100000000);
     claveplana = myPlaintextPassword.toString().padStart(8,"0");
     mailOptions = {
-      from: 'Votación SSD <no-reply@sdefensa.cl>', // sender address
-      to:  nombre + " <caravena@rembox.cl>", // list of receivers
+      from: 'Votación', // sender address
+      to:  nombre + "<" + correo + ">", // list of receivers
       subject: "Acceso a sistema de Votación", // Subject line
       text: "Estimado(a) "+ nombre +
             " Sus datos de acceso al sistema de votación son los siguientes: "+

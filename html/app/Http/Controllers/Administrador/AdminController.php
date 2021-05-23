@@ -44,8 +44,20 @@ class AdminController extends Controller
 
   public function admin()
   {
-    return view('administrador.panel');
 
+    $Votacion = new voto;
+    $BuscaCuantosHanVotado = $Votacion->BuscaCuantosHanVotado();
+    $BuscaTotalVotantes = $Votacion->BuscaTotalVotantes();
+    $PorcentajeVotantes = ($BuscaCuantosHanVotado[0]->total_votado/$BuscaTotalVotantes[0]->total_votantes)*100;
+    $BuscaTotalVotos = $Votacion->BuscaTotalVotos();
+    $PorcentajeVotos = ($BuscaTotalVotos[0]->total_votos/($BuscaTotalVotantes[0]->total_votantes)*2)*100;
+
+    return view('administrador.panel', ['CuantosHanVotado' => $BuscaCuantosHanVotado[0],
+                                        'TotalVotantes'=> $BuscaTotalVotantes[0],
+                                        'TotalVotos' => $BuscaTotalVotos[0],
+                                        'PorcentajeVotantes' => $PorcentajeVotantes,
+                                        'PorcentajeVotos' => $PorcentajeVotos
+                                       ]);
 
 
   }

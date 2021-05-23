@@ -123,7 +123,34 @@ EOT;
     }
 
 
+    public function BuscaCuantosHanVotado()
+    {
+      $qry = <<<EOT
+            SELECT COUNT(vv.id_votado) AS total_votado
+              FROM vto_votados vv;
+EOT;
+      return DB::select($qry);
+    }
 
+    public function BuscaTotalVotantes()
+    {
+      $qry = <<<EOT
+            SELECT COUNT(u.id) AS total_votantes
+              FROM users u
+             WHERE u.`role` = 'user';
+EOT;
+      return DB::select($qry);
+    }
+
+
+    public function BuscaTotalVotos()
+    {
+      $qry = <<<EOT
+            SELECT COUNT(vv.id_voto) AS total_votos
+              FROM vto_votos vv;
+EOT;
+      return DB::select($qry);
+    }
 
 
 }

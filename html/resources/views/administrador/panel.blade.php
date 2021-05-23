@@ -43,36 +43,18 @@
 
                   <div class="progress-group">
                     Cuantos han votado
-                    <span class="float-right"><b>160</b>/200</span>
+                    <span class="float-right"><b>{{ $CuantosHanVotado->total_votado }}</b>/{{ $TotalVotantes->total_votantes }}</span>
                     <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: 80%"></div>
+                      <div class="progress-bar bg-primary" style= "width: {{ $PorcentajeVotantes }}%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
 
                   <div class="progress-group">
                     Votos validos
-                    <span class="float-right"><b>310</b>/400</span>
+                    <span class="float-right"><b>{{ $TotalVotos->total_votos }}</b>/{{ ($TotalVotantes->total_votantes)*2 }}</span>
                     <div class="progress progress-sm">
-                      <div class="progress-bar bg-success" style="width: 75%"></div>
-                    </div>
-                  </div>
-
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="float-right"><b>480</b>/800</span>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-danger" style="width: 60%"></div>
-                    </div>
-                  </div>
-
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    Send Inquiries
-                    <span class="float-right"><b>250</b>/500</span>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-warning" style="width: 50%"></div>
+                      <div class="progress-bar bg-success" style="width: {{ $PorcentajeVotos }}%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->

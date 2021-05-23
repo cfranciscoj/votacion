@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/votado', [App\Http\Controllers\votos\VotosController::class, 'recolecta'])->name('votado');
+Route::post('/actpass', [App\Http\Controllers\HomeController::class, 'actualizaPass'])->name('actpass');
 
 
 Route::get('/restpass', [App\Http\Controllers\Profile\ProfileController::class, 'restpass'])->name('resetpass');

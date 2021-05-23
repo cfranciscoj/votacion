@@ -32,18 +32,38 @@ class HomeController extends Controller
       // $EmailUsuario = 'Auth::email()';
       $Candidatos = $Votacion->BuscaCandidatos();
       $Votante = $Votacion->BuscaVotantes($IdUsuario);
+      $PassInit = $Votacion->TraeInitPass($IdUsuario);
 
       if($Votante[0]->votado == 0){
-        $yavoto = 0;
+        $yavoto = $Votante[0]->votado;
       }
       else{
         $yavoto = 1;
       }
 
-      return view('home', ['Candidatos' => $Candidatos, 'yavoto'=> $yavoto]);
+      if($PassInit[0]->init_pass == 0){
+        $InitPass = $PassInit[0]->init_pass;
+      }
+      else{
+        $InitPass = 1;
+      }
+      return view('home', ['Candidatos' => $Candidatos, 'yavoto'=> $yavoto, 'InitPass' => $InitPass, 'IdUsuario' => $IdUsuario]);
       //return view('home')->with('EmailUsuario', 'hola');
+    }
 
+    public function actualizaPass(Request $request)
+    {
 
+      $IdUsuario = Auth::id();
+      $PassNew = request()->pass;
+
+      $PassNewHash = bcrypt($PassNew);
+      $Votacion = new voto;
+      $ActualizacionPass= $Votacion->ActPass($IdUsuario, $PassNewHash);
+
+      $Resultado = json_encode($ActualizacionPass);
+
+      return $Resultado;
     }
 
 }

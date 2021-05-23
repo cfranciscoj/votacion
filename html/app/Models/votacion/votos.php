@@ -69,23 +69,6 @@ EOT;
       return DB::select($qry);
     }
 
-//     public function BuscaVotosCandidatos()
-//     {
-//       $qry = <<<EOT
-//               SELECT vc.nombre_candidato    AS nombre_candidato,
-//                      COUNT(vv.id_candidato) AS total_votos
-//                 FROM vto_votos vv
-//                RIGHT
-//                 JOIN vto_candidatos vc
-//                   ON vv.id_candidato = vc.id_candidato
-//                GROUP
-//                   BY vc.nombre_candidato;
-//
-// EOT;
-//       return DB::select($qry);
-//     }
-
-
 
     public function TotalVotantes()
     {
@@ -117,6 +100,26 @@ EOT;
         FROM vto_votos vv
 EOT;
       return DB::select($qry);
+    }
+
+    public function TraeInitPass($IdUsuario)
+    {
+      $qry = <<<EOT
+            SELECT u.init_pass AS init_pass
+              FROM users u
+             WHERE u.id = ${IdUsuario};
+
+EOT;
+      return DB::select($qry);
+    }
+
+    public function ActPass($IdUsuario, $Pass)
+    {
+      $affected = DB::table('users')
+                     ->where('id', $IdUsuario)
+                     ->update(['password' => $Pass, 'init_pass' => 1]);
+
+      return $affected;
     }
 
 

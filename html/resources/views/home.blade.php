@@ -8,7 +8,7 @@
     <input type="hidden" id="yaestavotado" value="{{ $yavoto }}">
     <input type="hidden" id="initpass" value="{{ $InitPass }}">
     <input type="hidden" id="RutaValidaCambioPass" value="{{ route('actpass')}}">
-    
+
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-12 reset">
@@ -161,7 +161,7 @@
                 <input type="password" class="form-control" id="pwd_001">
               </div>
               <div class="form-group">
-                <label for="pwd">Rescriba su nueva contraseña:</label>
+                <label for="pwd">Reescriba su nueva contraseña:</label>
                 <input type="password" class="form-control" id="pwd_002">
               </div>
             </div>
